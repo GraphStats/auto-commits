@@ -21,4 +21,4 @@ if (!fs.existsSync(".git")) {
   process.exit(1);
 }
 
-setInterval(updateAndCommit, 500);
+setInterval(updateAndCommit, 900);
