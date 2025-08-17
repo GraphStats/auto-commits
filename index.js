@@ -1,9 +1,9 @@
 const { exec } = require("child_process");
 const fs = require("fs");
 
-const REPO_URL = "https://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@github.com/graphstats/auto-commits.git";
+const REPO_URL = "git@github.com:graphstats/auto-commits.git"; // SSH URL
 const BRANCH = "main";
-const COMMIT_INTERVAL = 500; // toutes les 30 secondes
+const COMMIT_INTERVAL = 500; // toutes les 0.5 secondes
 
 function run(cmd, callback) {
   exec(cmd, (err, stdout, stderr) => {
@@ -18,7 +18,7 @@ function updateAndCommit() {
   const now = new Date();
   const random = Math.floor(Math.random() * 100000);
   const content = `Auto-update: ${now.toISOString()} - ${random}`;
-  
+
   const prevContent = fs.existsSync("update.txt") ? fs.readFileSync("update.txt", "utf8") : "";
   if (prevContent === content) return; // pas de changement → pas de commit
 
